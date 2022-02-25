@@ -1,3 +1,8 @@
+#' row_param
+#'
+#' This function takes the output from the bespoke "New Decision" software
+#' and calculates corrections.
+#'
 #' @export
 
 row_param <- function(file, dist) {         # requires filepath (.txt output from Decision Support) and "dist", which is the numerical distance value (i.e. 1600)
