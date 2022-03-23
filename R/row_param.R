@@ -19,7 +19,7 @@ row_param <- function(file, dist) {         # requires filepath (.txt output fro
   names(df) <- header_names7
   if(missing(dist)) {
     dist <- df$Row_m[1]*500
-    df$Angle.offset <- ifelse((df$Id_ == "L"), (df$Bearing_deg-90)%%360, (df$Bearing_deg+90)%%360)
+    df$Angle.offset <- ifelse((df$Id == "L"), (df$Bearing_deg-90)%%360, (df$Bearing_deg+90)%%360)
     df$Radians.offset <- df$Angle.offset*pi/180
     df$Distance <- as.numeric(dist)/100000000
     df$Sin.Radians.offset <- sin(df$Radians.offset)
@@ -28,11 +28,11 @@ row_param <- function(file, dist) {         # requires filepath (.txt output fro
     df$Latitude_correction <- df$Distance*df$Cos.Radians.offset
     df$lat_corrd <- df$Latitude_deg + df$Latitude_correction
     df$lon_corrd <- df$Longitude_deg + df$Departure
-    warning(paste("No distance specified, default of", df$Row_m[1]*500, "used")
+    warning(paste("No distance specified, default of", df$Row_m[1]*500, "used"))
     return(df)
   }
   else {
-    df$Angle.offset <- ifelse((df$Id_ == "L"), (df$Bearing_deg-90)%%360, (df$Bearing_deg+90)%%360)
+    df$Angle.offset <- ifelse((df$Id == "L"), (df$Bearing_deg-90)%%360, (df$Bearing_deg+90)%%360)
     df$Radians.offset <- df$Angle.offset*pi/180
     df$Distance <- as.numeric(dist)/100000000
     df$Sin.Radians.offset <- sin(df$Radians.offset)
